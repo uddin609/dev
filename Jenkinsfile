@@ -23,7 +23,7 @@ pipeline {
         docker build -t uddin609/user:01 .
         cd ../admin
         docker build -t uddin609/admin:01 .
-        
+        ...
         echo '***** DOCKER HUB *****'
         withCredentials([usernamePassword(credentialsId: 'DockerHubC', passwordVariable: 'DHPASS', usernameVariable: 'DHUSER')]) {
           sh "docker login -u ${DHUSER} -p ${DHPASS}"
@@ -33,7 +33,7 @@ pipeline {
         docker push uddin609/auth:01
         docker push uddin609/user:01
         docker push uddin609/admin:01
-        
+        ...
       }
     }
   }
