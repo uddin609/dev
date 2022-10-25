@@ -36,5 +36,12 @@ pipeline {
         '''
       }
     }
-  }
-  }
+
+    stage('Deploy_To_TestServer') {
+      steps {
+        echo '***** DEPLOYING TO TEST SERVER *****'
+        withCredentials([string(credentialsId: 'SERVERPASS', variable: 'SERVERPASS')])    {
+          sh "sshpass -p ${SERVERPASS} ssh -o StrictHostKeyChecking=no ubuntu@54.198.218.245 'docker-compose down && docker-compose up -d'"
+        }
+        echo '***** DEPLOYMENT IS DONE FOR TEST SERVER *****'
+                            
