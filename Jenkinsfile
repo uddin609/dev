@@ -33,6 +33,7 @@ pipeline {
         docker push uddin609/auth:01
         docker push uddin609/user:01
         docker push uddin609/admin:01
+        
         ...
       }
     }
